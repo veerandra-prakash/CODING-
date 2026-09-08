@@ -1,0 +1,199 @@
+Two Pointers has several important forms
+
+Don't think Two Pointers is only:
+
+left = 0
+right = n-1
+
+There are multiple patterns.
+
+Type 1 — Opposite Direction Pointers
+
+Pointers start from opposite ends.
+
+1 2 3 4 5 6 7
+↑           ↑
+L           R
+
+Move toward the center.
+
+Classic example:
+
+Two Sum II — sorted array.
+
+[1,2,4,6,8,9]
+target = 10
+
+Start:
+
+L = 1
+R = 9
+
+Sum:
+
+1 + 9 = 10
+
+Done.
+
+If:
+
+sum < target
+
+increase left.
+
+Why?
+
+Because the array is sorted.
+
+If:
+
+sum > target
+
+decrease right.
+
+
+
+
+Type 2 — Same Direction Two Pointers
+
+This is where Sliding Window comes into the picture.
+
+0 1 2 3 4 5 6
+↑     ↑
+L     R
+
+Both move toward the right.
+
+Example:
+
+left = 0;
+
+for (int right = 0; right < n; right++) {
+
+    while (condition) {
+        left++;
+    }
+}
+
+This is technically a two-pointer technique, but because we're maintaining a contiguous window, we call it Sliding Window.
+
+This is why I told you:
+
+Sliding Window is a specialized form of Two Pointers.
+
+
+
+
+
+Type 3 — Fast and Slow Pointers
+
+Another famous form:
+
+slow
+ ↓
+1 → 2 → 3 → 4 → 5
+         ↑
+        fast
+
+Usually used for linked lists.
+
+Examples:
+
+Detect cycle
+
+Floyd's Cycle Detection:
+
+slow = slow->next;
+fast = fast->next->next;
+
+If:
+
+slow == fast
+
+there's a cycle.
+
+Find middle of linked list
+slow = slow->next;
+fast = fast->next->next;
+
+When fast reaches the end:
+
+slow = middle
+
+
+
+
+
+
+Type 4 — Read/Write Pointers
+
+Very useful for arrays.
+
+Example:
+
+Remove duplicates from sorted array.
+
+1 1 2 2 3 3
+
+Use:
+
+read
+ ↓
+1 1 2 2 3 3
+ ↑
+write
+
+The read pointer scans.
+
+The write pointer places valid elements.
+
+Concept:
+
+int write = 1;
+
+for (int read = 1; read < n; read++) {
+
+    if (nums[read] != nums[read - 1]) {
+        nums[write] = nums[read];
+        write++;
+    }
+}
+
+This pattern appears frequently in array problems.
+
+
+
+
+
+Type 5 — Partition Two Pointers
+
+This is related to:
+
+Dutch National Flag
+
+You were recently learning this.
+
+Example:
+
+0 1 2 0 1 2
+
+Maintain regions using pointers.
+
+For example:
+
+low
+mid
+high
+
+This is actually a multi-pointer partitioning technique.
+
+Used in:
+
+Sort Colors
+partition arrays
+quick sort
+Dutch National Flag
+
+
+
+

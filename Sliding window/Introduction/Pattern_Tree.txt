@@ -1,0 +1,92 @@
+SLIDING WINDOW
+│
+├── Fixed Size Window
+│   │
+│   ├── Maximum sum of size K
+│   ├── Average of size K
+│   ├── Maximum/Minimum in window
+│   └── Frequency problems
+│
+└── Variable Size Window
+    │
+    ├── At Most K
+    │   ├── At most K distinct
+    │   ├── Sum <= K
+    │   ├── At most K zeros
+    │   └── At most K replacements
+    │
+    ├── At Least K
+    │   ├── Sum >= K
+    │   └── Minimum valid window
+    │
+    ├── Exactly K
+    │   ├── Exactly K distinct
+    │   └── Exactly K occurrences
+    │
+    └── Constraint based
+        ├── No duplicates
+        ├── Character frequency
+        ├── Number of zeros
+        └── Number of replacements
+
+
+
+
+
+COUNTING
+COUNTING SLIDING WINDOW
+        |
+        ├── Count At Most K
+        |
+        ├── Count Exactly K
+        |
+        ├── Count subarrays satisfying constraint
+        |
+        ├── Count subarrays with property
+        |
+        └── Count using "right - left + 1"
+
+
+
+
+PATTERN FOR LONGEST AND SHORTEST:
+
+LONGEST + condition
+        ↓
+Expand → If invalid, shrink → Take maximum
+
+
+SHORTEST + condition
+        ↓
+Expand → If valid, shrink → Take minimum
+
+
+lONGEST CODE:
+for (right...) {
+
+    add nums[right];
+
+    while (sum > K) {
+        remove nums[left];
+        left++;
+    }
+
+    // VALID WINDOW
+    ans = max(ans, window_length);
+}
+
+
+SHORTEST CODE:
+for (right...) {
+
+    sum += nums[right];
+
+    while (sum >= target) {
+
+        // CURRENT WINDOW IS VALID
+        ans = min(ans, right - left + 1);
+
+        sum -= nums[left];
+        left++;
+    }
+}
