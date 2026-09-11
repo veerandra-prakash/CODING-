@@ -40,7 +40,6 @@ public:
             max_len=max(max_len,len);
         }
         return s.size()==1 ? 1 : max_len;
-        
     }
 };
  
