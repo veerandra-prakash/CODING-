@@ -45,7 +45,6 @@ public:
             }
         }
     }
-    
     int findCircleNum(vector<vector<int>>& isConnected) {
         int V = isConnected.size();
         vector<int>visited(V+1,-1);
